@@ -1,10 +1,11 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-
-client.on('message', msg => {
-  if (msg.content === 'General Kenobi?') {
-    msg.reply('Hello there.');
-  }
+client.on("ready", () => {
+    if(timeout) {
+        clearInterval(timeout);
+    }
+    timeout = setInterval(() => client.channels.get("ID").send("MESSAGE"), 3600000);
+    console.log("READY");
 });
-
-client.login(process.env.BOT_TOKEN);
+var timeout;
+client.login("TOKEN");
